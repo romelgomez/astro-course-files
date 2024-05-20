@@ -11,8 +11,8 @@ export const formSubmit = (form: HTMLFormElement) => {
       });
 
       if (!response.ok) {
-        const { error } = await response.json();
-        throw new Error(error.code);
+        const { message } = await response.json();
+        throw new Error(message);
       }
       form.reset();
       window.location.reload();
