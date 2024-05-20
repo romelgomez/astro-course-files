@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import vercel from "@astrojs/vercel/serverless";
 
 import db from "@astrojs/db";
@@ -7,5 +7,12 @@ import db from "@astrojs/db";
 export default defineConfig({
   output: "server",
   adapter: vercel(),
-  integrations: [db()]
+  integrations: [db()],
+  experimental: {
+    security: {
+      csrfProtection: {
+        origin: true,
+      },
+    },
+  },
 });
