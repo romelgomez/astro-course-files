@@ -4,6 +4,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const { session } = Astro.locals;
 ---
 
 <!doctype html>
@@ -20,9 +22,13 @@ const { title } = Astro.props;
     <main>
       <slot />
     </main>
-    <form action="/api/logout.json" data-authForm>
-      <button>Logout</button>
-    </form>
+    {
+      session && (
+        <form action="/api/logout.json" data-authForm>
+          <button>Logout</button>
+        </form>
+      )
+    }
 
     <script>
       import { formSubmit } from "../lib/formSubmit";
