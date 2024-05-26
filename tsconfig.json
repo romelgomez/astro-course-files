@@ -3,8 +3,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@ui/*": ["src/copmonents/ui/*"],
-    }
+      "@/*": [
+        "src/*"
+      ],
+      "@ui/*": [
+        "src/copmonents/ui/*"
+      ]
+    },
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   }
 }

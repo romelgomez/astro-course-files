@@ -13,6 +13,7 @@ import Hero from "@/components/projects/hero.astro";
 import ContactForm from "@/components/ContactForm.astro";
 import ProjectTile from "@/components/ui/ProjectTile.astro";
 import getSearchParamAsArray from "@/lib/getSearchParamAsArray";
+import Counter from "@/components/Counter";
 
 // collections
 const allTools = await getCollection("tools");
@@ -33,6 +34,17 @@ if (filterItems.length > 0) {
   description="Here are some recent projects I’ve done for clients."
 >
   <div>
+    <!-- <video controls="" autoplay="" transition:persist="video">
+      <source
+        src="https://ia804502.us.archive.org/33/items/GoldenGa1939_3/GoldenGa1939_3_512kb.mp4"
+        type="video/mp4"
+      />
+    </video> -->
+    <Counter
+      client:load
+      pageTitle="Projects"
+      transition:persist="react-counter"
+    />
     <Hero />
     <div class="container">
       <div class="filter-wrapper">
