@@ -1,9 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro";
-const { user } = Astro.locals;
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+// components
+import Hero from "@/components/home/hero.astro";
+import FeaturesBanner from "@/components/home/FeaturesBanner.astro";
+import ProjectSection from "@/components/home/ProjectSection.astro";
+import ContactForm from "@/components/ContactForm.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-  <h1>{user && user.username}, you are successfully logged in!</h1>
-  <p>You are now seeing protected content!</p>
-</Layout>
+<BaseLayout>
+  <Hero />
+  <FeaturesBanner />
+  <ProjectSection />
+  <ContactForm />
+</BaseLayout>
