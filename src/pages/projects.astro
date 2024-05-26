@@ -102,46 +102,48 @@ if (filterItems.length > 0) {
 </BaseLayout>
 
 <script>
-  // import statments
   import getSearchParamAsArray from "@/lib/getSearchParamAsArray";
   import setNewURLParams from "@/lib/setNewURLParams";
+  document.addEventListener("astro:page-load", () => {
+    // import statments
 
-  // query selectors
-  const filters = document.querySelectorAll(
-    "[data-tool]"
-  ) as NodeListOf<HTMLButtonElement>;
-  const clearAllBtn = document.querySelector("#close-all");
+    // query selectors
+    const filters = document.querySelectorAll(
+      "[data-tool]"
+    ) as NodeListOf<HTMLButtonElement>;
+    const clearAllBtn = document.querySelector("#close-all");
 
-  // clear all
-  clearAllBtn?.addEventListener("click", () => {
-    window.location.href = "projects";
-  });
+    // clear all
+    clearAllBtn?.addEventListener("click", () => {
+      window.location.href = "projects";
+    });
 
-  // filtering
-  filters.forEach((filter) => {
-    filter.addEventListener("click", () => {
-      const isPressed = filter.getAttribute("aria-pressed") === "true";
+    // filtering
+    filters.forEach((filter) => {
+      filter.addEventListener("click", () => {
+        const isPressed = filter.getAttribute("aria-pressed") === "true";
 
-      filter.setAttribute("aria-pressed", isPressed ? "false" : "true");
+        filter.setAttribute("aria-pressed", isPressed ? "false" : "true");
 
-      // get all existing params
-      const existingParams = getSearchParamAsArray(
-        new URL(window.location.href),
-        "tools"
-      );
+        // get all existing params
+        const existingParams = getSearchParamAsArray(
+          new URL(window.location.href),
+          "tools"
+        );
 
-      const newParams = isPressed
-        ? existingParams.filter((p) => p !== filter?.dataset?.tool)
-        : [...existingParams, filter?.dataset?.tool];
+        const newParams = isPressed
+          ? existingParams.filter((p) => p !== filter?.dataset?.tool)
+          : [...existingParams, filter?.dataset?.tool];
 
-      // set new URL
-      const newUrl = setNewURLParams({
-        key: "tools",
-        url: new URL(window.location.href),
-        valueArray: newParams as string[],
+        // set new URL
+        const newUrl = setNewURLParams({
+          key: "tools",
+          url: new URL(window.location.href),
+          valueArray: newParams as string[],
+        });
+
+        window.location.assign(newUrl.toString());
       });
-
-      window.location.assign(newUrl.toString());
     });
   });
 </script>
