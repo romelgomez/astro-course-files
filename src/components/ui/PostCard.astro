@@ -16,16 +16,30 @@ const { title, description, image, pubDate } = post.data;
 
 <article aria-label={title} class="post-card">
   <div>
-    <Image src={image} alt={title} width={400} height={200} format="avif" />
+    <Image
+      src={image}
+      alt={title}
+      width={400}
+      height={200}
+      format="avif"
+      transition:name={`${post.slug}-image`}
+    />
     <div class="content">
       <div class="rows">
         <div>
-          <Heading tagName="h3" size="h4">
+          <Heading
+            tagName="h3"
+            size="h4"
+            transition:name={`${post.slug}-title`}
+          >
             <a href={`/blog/${post.slug}/`}>{title}</a>
           </Heading>
-          <FormattedDate pubDate={pubDate} />
+          <FormattedDate
+            pubDate={pubDate}
+            transition:name={`${post.slug}-date`}
+          />
         </div>
-        <p>{description}</p>
+        <p transition:name={`${post.slug}-description`}>{description}</p>
         <Link href={`/blog/${post.slug}/`}>Read Post</Link>
       </div>
     </div>

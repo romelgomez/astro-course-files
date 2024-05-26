@@ -38,9 +38,11 @@ const { title, pubDate, description, image } = post.data;
 <BaseLayout title={title} description={description}>
   <section aria-label="Post metadata" class="blog-metadata">
     <header>
-      <FormattedDate pubDate={pubDate} />
-      <Heading tagName="h1" size="h2">{title}</Heading>
-      <p>{description}</p>
+      <FormattedDate pubDate={pubDate} transition:name={`${post.slug}-date`} />
+      <Heading tagName="h1" size="h2" transition:name={`${post.slug}-title`}
+        >{title}</Heading
+      >
+      <p transition:name={`${post.slug}-description`}>{description}</p>
     </header>
     <Image
       src={image}
@@ -48,6 +50,7 @@ const { title, pubDate, description, image } = post.data;
       width={1000}
       height={400}
       class="hero-image"
+      transition:name={`${post.slug}-image`}
     />
   </section>
   <section aria-label="Post content" class="blog-content">

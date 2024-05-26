@@ -16,7 +16,7 @@ const { title, url, icons, thumbnail } = data;
 const iconData = await getEntries(icons);
 ---
 
-<article aria-label={title} class="project-tile">
+<article aria-label={title} class="project-tile" transition:name={url}>
   <a href={url}>
     <Image src={thumbnail} alt={title} width={400} format="avif" />
     <div class="content">

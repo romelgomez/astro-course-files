@@ -1,5 +1,6 @@
 ---
 import { baseData } from "@/data/siteData";
+import { ViewTransitions } from "astro:transitions";
 
 type Props = {
   title?: string;
@@ -24,4 +25,5 @@ const { title = baseData.title, description = baseData.description } =
   />
   <meta name="description" content={description} />
   <title>{title}</title>
+  <ViewTransitions />
 </head>
