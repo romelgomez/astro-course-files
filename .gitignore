@@ -2,7 +2,6 @@
 dist/
 # generated types
 .astro/
-.netlify
 
 # dependencies
 node_modules/
@@ -20,3 +19,6 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# jetbrains setting folder
+.idea/
