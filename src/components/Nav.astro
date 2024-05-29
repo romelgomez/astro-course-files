@@ -1,26 +1,49 @@
 ---
-const navItems = [
-  {
-    href: "/",
-    text: "Home",
-  },
-  {
-    href: "about",
-    text: "About",
-  },
-  {
-    href: "blog",
-    text: "Blog",
-  },
-];
+import type { Lang } from "@/i18n/defaultLangOptions";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const navItems = {
+  en: [
+    {
+      href: "/",
+      text: "Home",
+    },
+    {
+      href: "about",
+      text: "About",
+    },
+    {
+      href: "blog",
+      text: "Blog",
+    },
+  ],
+  es: [
+    {
+      href: "/",
+      text: "Inicio",
+    },
+    {
+      href: "about",
+      text: "Nosotros",
+    },
+    {
+      href: "blog",
+      text: "Blog",
+    },
+  ],
+};
+
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <nav>
   <ul>
     {
-      navItems.map((item) => (
+      navItems[currentLocale].map((item) => (
         <li>
-          <a href={item.href}>{item.text}</a>
+          <a href={getRelativeLocaleUrl(currentLocale, item.href)}>
+            {item.text}
+          </a>
         </li>
       ))
     }
