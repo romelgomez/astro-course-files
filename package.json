@@ -1,5 +1,5 @@
 {
-  "name": "module-13",
+  "name": "module-14",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,9 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.7.0",
-    "@astrojs/node": "^8.2.5",
+    "@astrojs/mdx": "^3.0.1",
+    "@astrojs/rss": "^4.0.6",
+    "@astrojs/sitemap": "^3.1.5",
     "astro": "^4.9.2",
+    "@astrojs/check": "^0.7.0",
     "typescript": "^5.4.5"
   }
 }
