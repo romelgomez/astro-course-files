@@ -8,11 +8,7 @@ export default defineConfig({
   output: "server",
   adapter: vercel(),
   integrations: [db()],
-  experimental: {
-    security: {
-      csrfProtection: {
-        origin: true,
-      },
-    },
+  security: {
+    origin: true,
   },
 });
