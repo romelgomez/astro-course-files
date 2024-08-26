@@ -8,6 +8,7 @@ export default config({
     testimonial: singleton({
       label: "Testimonial Section",
       path: "src/content/keystatic/testimonialSection",
+      format: {data: "yaml"},
       schema: {
         heading: fields.object({
           tag: fields.select({
