@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import type { TestimonialSectionType } from "@/pages/keystatic-testimonials.astro";
+import type { TestimonialSectionType } from "@/pages/index.astro";
 import { Star } from "lucide-react";
 
 const LocalCard = ({
