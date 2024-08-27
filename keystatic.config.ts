@@ -48,6 +48,17 @@ export default config({
             },
           }),
         }),
+        testimonials: fields.array(
+          fields.relationship({
+            label: "Testimonials",
+            collection: "testimonials",
+          }),
+          {
+            label: "Testimonials",
+            validation: { length: { min: 1 } },
+            itemLabel: (props) => props.value ?? "Testimonial",
+          }
+        ),
       },
     }),
   },
