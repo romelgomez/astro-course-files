@@ -1,14 +1,14 @@
-import { config, fields, collection, singleton } from '@keystatic/core';
+import { config, fields, collection, singleton } from "@keystatic/core";
 
 export default config({
   storage: {
-    kind: "local"
+    kind: "local",
   },
   singletons: {
     testimonial: singleton({
       label: "Testimonial Section",
       path: "src/content/keystatic/testimonialSection",
-      format: {data: "yaml"},
+      format: { data: "yaml" },
       schema: {
         heading: fields.object({
           tag: fields.select({
@@ -39,16 +39,69 @@ export default config({
                 value: "h6",
               },
             ],
-            defaultValue: "h1"
+            defaultValue: "h1",
           }),
           text: fields.text({
             label: "Heading Text",
             validation: {
-              isRequired: true
-            }
-          })
-        })
-      }      
-    })
-  }
-})
+              isRequired: true,
+            },
+          }),
+        }),
+      },
+    }),
+  },
+  collections: {
+    testimonials: collection({
+      label: "Testimonials",
+      path: "src/content/testimonial/*",
+      format: { data: "yaml" },
+      slugField: "name",
+      schema: {
+        name: fields.slug({ name: { label: "Name" } }),
+        role: fields.text({
+          label: "Role",
+          validation: {
+            isRequired: true,
+          },
+        }),
+        content: fields.text({
+          label: "Testimonial Content",
+          validation: {
+            isRequired: true,
+          },
+          multiline: true,
+        }),
+        date: fields.date({
+          label: "Testimonial Date",
+          defaultValue: { kind: "today" },
+          validation: {
+            isRequired: true,
+          },
+        }),
+        isFeatured: fields.checkbox({
+          label: "Feature this testimonial?",
+          defaultValue: false,
+        }),
+        rating: fields.number({
+          label: "Rating",
+          defaultValue: 5,
+          step: 1,
+          validation: {
+            isRequired: true,
+            min: 1,
+            max: 5,
+          },
+        }),
+        image: fields.image({
+          label: "Headshot",
+          description: "Headshot for testimonial person",
+          validation: {
+            isRequired: true,
+          },
+          publicPath: "src/assets/testimonial/",
+        }),
+      },
+    }),
+  },
+});
