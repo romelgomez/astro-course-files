@@ -4,6 +4,15 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import "@/styles/globals.css";
 import { getEntries, getEntry } from "astro:content";
 
+const BASE_URL = "http://localhost:1337";
+
+const res = await fetch(
+  `${BASE_URL}/api/pages?populate[primary_heading]=true&populate[blocks][populate][testimonial][populate][image][fields][0]=url&populate[blocks][populate][heading]=true`
+);
+
+const data = await res.json();
+console.log("🚀 ~ data:", data);
+
 // const testimonialSection = await getEntry("keystatic", "testimonialSection");
 
 // const testimonials = await getEntries(testimonialSection.data.testimonials);
