@@ -33,7 +33,8 @@
       "type": "dynamiczone",
       "components": [
         "section.testimonial-section"
-      ]
+      ],
+      "required": true
     }
   }
 }
