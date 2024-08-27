@@ -24,10 +24,16 @@
       "type": "uid",
       "targetField": "title"
     },
-    "heading": {
+    "primary_heading": {
       "type": "component",
       "repeatable": false,
       "component": "elements.heading"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "section.testimonial-section"
+      ]
     }
   }
 }
